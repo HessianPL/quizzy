@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {TestInterface} from 'types'
 
 function App() {
+    console.log('Testing App')
+
+    let testObj: TestInterface = {
+        dupa: 1337
+    }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Quizzy App</h1>
+      <h3>Make a quiz, send to friends or maybe take one or two?</h3>
     </div>
   );
 }
