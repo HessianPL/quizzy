@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {QuizEntityResponse} from 'types'
+import {Header} from "./components/Header";
 
 function App() {
     console.log('Testing App')
@@ -18,8 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Quizzy App</h1>
-      <h3>Make a quiz, send to friends or maybe take one or two?</h3>
+      <Header />
     </div>
   );
 }
