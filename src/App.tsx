@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import {QuizEntityResponse} from 'types'
 import {Header} from "./components/common/Header/Header";
 import {Route, Routes} from "react-router-dom";
 import {AboutView} from "./views/AboutView";
@@ -10,17 +9,6 @@ import {NotFoundView} from "./views/NotFoundView";
 
 function App() {
     console.log('Testing App')
-
-    let testObj: QuizEntityResponse = {
-        id: '',
-        passwordProtected: false,
-        publicListing: false,
-        instantFeedback: false,
-        endingFeedback: false,
-        passingPercentage: 0,
-        title: '',
-        description: ''
-    }
 
   return (
     <div className="App">
