@@ -1,12 +1,19 @@
 import React from 'react';
 import './App.css';
-import {TestInterface} from 'types'
+import {QuizEntityResponse} from 'types'
 
 function App() {
     console.log('Testing App')
 
-    let testObj: TestInterface = {
-        dupa: 1337
+    let testObj: QuizEntityResponse = {
+        id: '',
+        passwordProtected: false,
+        publicListing: false,
+        instantFeedback: false,
+        endingFeedback: false,
+        passingPercentage: 0,
+        title: '',
+        description: ''
     }
 
   return (
