@@ -6,7 +6,7 @@ export const Header = () => {
     return (
         <header className="header">
             <h1 className="header__title">Quizzy App</h1>
-            <h3 className="header__subtitle">Make a quiz, send to friends or maybe take one or two?</h3>
+            <h3 className="header__subtitle">Complete a quiz or create a new one and share it!</h3>
             <nav className="header__navigation">
                 <ul className="header__list">
                     <li className="header__item">
