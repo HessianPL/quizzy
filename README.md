@@ -30,4 +30,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Builds the app for production to the `build` folder.\
 
 ## Live demo
-You may try a live demo on http://test.example.com
+You may try a live demo on https://main--cozy-shortbread-9075c9.netlify.app/
