@@ -1,0 +1,16 @@
+.quizPreviewBar {
+    border: 1px solid black;
+    width: 90%;
+    margin: 5px auto;
+    padding: 2px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.quizPreviewBar:hover {
+    background-color: #fbd4ff;
+}
+
+.quizPreviewBar p {
+    margin: 0;
+}
