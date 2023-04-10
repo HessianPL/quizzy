@@ -1,0 +1,12 @@
+.quiz {
+    padding: 10px;
+}
+
+.callToAction {
+    font-weight: bold;
+}
+
+.start-button {
+    padding: 3px 5px;
+    cursor: pointer;
+}
