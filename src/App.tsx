@@ -6,10 +6,9 @@ import {AboutView} from "./views/AboutView";
 import {HomeView} from "./views/HomeView";
 import {NotFoundView} from "./views/NotFoundView";
 import {QuizMakerView} from "./views/QuizMakerView";
+import {SingleQuizView} from "./views/SingleQuizView";
 
 function App() {
-    console.log('Testing App')
-
   return (
     <div className="App">
       <Header />
@@ -17,6 +16,7 @@ function App() {
             <Route path="/" element={<HomeView />} />
             <Route path="/makequiz" element={<QuizMakerView />} />
             <Route path="/about" element={<AboutView />} />
+            <Route path="/quiz/:id" element={<SingleQuizView />} />
             <Route path="/*" element={<NotFoundView />} />
         </Routes>
     </div>
