@@ -8,17 +8,24 @@ export const QuizMaker = () => {
             description: '',
             passingPercentage: 100,
             timerQuiz: 0,
-            instantFeedback: true,
+            instantFeedback: false,
             endingFeedback: false,
-            publicListing: false,
+            publicListing: true,
             passwordProtected: false,
         }
     )
 
-    const handleSubmit = (event: SyntheticEvent) => {
-        event.preventDefault()
-        console.log('Form submission')
-        console.log(newQuizData)
+    const handleSubmit = async (event: SyntheticEvent) => {
+        event.preventDefault();
+        const response = await fetch(`http://127.0.0.1:${3001}/quiz`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newQuizData)
+        });
+        const data = await response.json();
+        console.log(data)
     }
 
     type InputValue = string | boolean;
