@@ -4,7 +4,6 @@ import {Header} from "./components/common/Header/Header";
 import {Route, Routes} from "react-router-dom";
 import {AboutView} from "./views/AboutView";
 import {HomeView} from "./views/HomeView";
-import {QuizMaker} from "./components/QuizMaker/QuizMaker";
 import {NotFoundView} from "./views/NotFoundView";
 import {QuizMakerView} from "./views/QuizMakerView";
 

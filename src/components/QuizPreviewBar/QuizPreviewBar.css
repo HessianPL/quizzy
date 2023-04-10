@@ -1,0 +1,56 @@
+.quizPreviewBar {
+    border: 1px solid black;
+    width: 45%;
+    margin: 5px auto;
+    padding: 2px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 5px;
+}
+
+.quizPreviewBar:hover {
+    background-color: rgba(234, 0, 255, 0.06);
+    transition: all 0.2s linear;
+}
+
+.quizPreviewBar p {
+    display: inline-block;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.quizPreviewBar__title {
+    font-weight: bold;
+    margin-right: 7px;
+}
+
+.quizPreviewBar__additionalInfo {
+    width: 50px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: #fad7ff;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    top: 20px;
+    z-index: 1;
+}
+.tooltip .tooltiptext--long {
+    width: 300px;
+}
+.tooltip:hover .tooltiptext,
+.tooltip:hover{
+    visibility: visible;
+}
