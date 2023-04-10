@@ -6,7 +6,6 @@ interface Props {
 }
 
 export const QuizPreviewBar = (props: Props) => {
-    console.log(props.quizData)
 
     return (
         <div className='quizPreviewBar'>

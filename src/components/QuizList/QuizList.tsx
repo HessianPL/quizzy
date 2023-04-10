@@ -1,11 +1,12 @@
 import {useState, useEffect} from "react";
 import {QuizPreviewBar} from "../QuizPreviewBar/QuizPreviewBar";
+import {Link} from "react-router-dom";
+import { QuizEntityResponse } from "../../../../quizzy-back/types/quiz/quiz-entity-response";
 
 export const QuizList= () => {
     const [quizList, setQuizList] = useState([]);
 
     useEffect(() => {
-        console.log('Fetching API');
         const fetchQuizList = async () => {
             const response = await fetch(`http://127.0.0.1:${3001}/quiz`);
             const listToSave = await response.json();
@@ -14,7 +15,7 @@ export const QuizList= () => {
         fetchQuizList();
     }, [])
 
-    const quizListElements = quizList.map((quiz, index) => <QuizPreviewBar key={index} quizData={quiz} />)
+    const quizListElements = quizList.map((quiz:QuizEntityResponse) => <Link to={`/quiz/${quiz.id}` } key={quiz.id}><QuizPreviewBar quizData={quiz} /></Link>)
 
     return (
         <>
