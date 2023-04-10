@@ -18,8 +18,7 @@ export const QuizList= () => {
 
     return (
         <>
-            <p>This is a quiz list component</p>
-            <p>We will see a list of public quizzes</p>
+            <p>Below is a list of publicly available quizzes that we invite you to take. Some of the quizzes have a lock icon next to them - to access these quizzes, you will need to know the password provided by the creator of the quiz.</p>
             {quizListElements}
         </>
     )
