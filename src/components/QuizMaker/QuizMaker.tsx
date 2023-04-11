@@ -49,8 +49,8 @@ export const QuizMaker = () => {
         <>
             <h2>Create your own quiz!</h2>
             <form onSubmit={handleSubmit} className='newQuizForm'>
-                <label htmlFor='title'>Quiz title:</label>
-                <input type="text" name="title" id='title' placeholder="Title of the quiz" value={newQuizData.title} onChange={handleChange}/>
+                <label>Quiz title: <input type="text" name="title" id='title' placeholder="Title of the quiz" value={newQuizData.title} onChange={handleChange}/>
+                </label>
                 <label>Description: <textarea name="description" placeholder="Description" value={newQuizData.description} onChange={handleChange}/></label>
                 <label>Passing percentage: <input type="number" name="passingPercentage" min={0} max={100} value={newQuizData.passingPercentage} onChange={handleChange} /></label>
                 <label>Time to complete (max 120 minutes): <input type="number" name="timerQuiz" min={0} max={60*60*2} value={newQuizData.timerQuiz} onChange={handleChange} /></label>
@@ -58,7 +58,7 @@ export const QuizMaker = () => {
                 <label>Ending feedback: <input type="checkbox" name="endingFeedback" checked={newQuizData.endingFeedback} onChange={handleChange} /></label>
                 <label>Public listing: <input type="checkbox" name="publicListing" checked={newQuizData.publicListing} onChange={handleChange} /></label>
 
-                <button>Save quiz!</button>
+                <button className='create-button'>Save this quiz</button>
             </form>
         </>
     )
