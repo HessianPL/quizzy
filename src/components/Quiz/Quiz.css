@@ -6,7 +6,8 @@
     font-weight: bold;
 }
 
-.start-button {
+.start-button,
+.addQuestion-button {
     padding: 3px 5px;
     cursor: pointer;
 }
