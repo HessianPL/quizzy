@@ -1,0 +1,7 @@
+footer {
+    background: rgb(195,1,148);
+    background: linear-gradient(94deg, rgba(195,1,148,1) 0%, rgba(190,0,255,1) 100%);
+    padding: 10px;
+    color: white;
+    font-family: Lato;
+}

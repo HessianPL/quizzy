@@ -7,6 +7,7 @@ import {HomeView} from "./views/HomeView";
 import {NotFoundView} from "./views/NotFoundView";
 import {QuizMakerView} from "./views/QuizMakerView";
 import {SingleQuizView} from "./views/SingleQuizView";
+import {Footer} from "./components/common/Footer/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/quiz/:id" element={<SingleQuizView />} />
             <Route path="/*" element={<NotFoundView />} />
         </Routes>
+        <Footer />
     </div>
   );
 }
