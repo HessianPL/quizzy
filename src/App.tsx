@@ -10,19 +10,21 @@ import {SingleQuizView} from "./views/SingleQuizView";
 import {Footer} from "./components/common/Footer/Footer";
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-        <Routes>
-            <Route path="/" element={<HomeView />} />
-            <Route path="/makequiz" element={<QuizMakerView />} />
-            <Route path="/about" element={<AboutView />} />
-            <Route path="/quiz/:id" element={<SingleQuizView />} />
-            <Route path="/*" element={<NotFoundView />} />
-        </Routes>
-        <Footer />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header/>
+            <div className="mainContentContainer">
+                <Routes>
+                    <Route path="/" element={<HomeView/>}/>
+                    <Route path="/makequiz" element={<QuizMakerView/>}/>
+                    <Route path="/about" element={<AboutView/>}/>
+                    <Route path="/quiz/:id" element={<SingleQuizView/>}/>
+                    <Route path="/*" element={<NotFoundView/>}/>
+                </Routes>
+            </div>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;
