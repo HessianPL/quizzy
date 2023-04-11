@@ -1,6 +1,7 @@
 import {ChangeEvent, SyntheticEvent, useState} from "react";
 import { QuizEntityIncoming } from "../../../../quizzy-back/types/quiz/quiz-entity-incoming";
 import './QuizMaker.css'
+import {NewQuestion, questionData} from "../NewQuestion/NewQuestion";
 
 export const QuizMaker = () => {
     const [newQuizData, setNewQuizData] = useState<QuizEntityIncoming>({
@@ -14,6 +15,63 @@ export const QuizMaker = () => {
             passwordProtected: false,
         }
     )
+
+   interface Question {
+        id?: string,
+        quizID: string,
+        text: string,
+        answers: {
+            text: string,
+            valid: boolean
+        }[]
+    }
+
+    const [questions, setQuestions] = useState<Question[]>([]);
+    const [questionsNumber, setQuestionsNumber] = useState(0)
+
+    const incQuestionsNo = (event: SyntheticEvent) => {
+        event.preventDefault();
+        setQuestionsNumber(prevQuestionsNumber => prevQuestionsNumber + 1)
+    }
+
+    const addQuestion = (obj: questionData) => {
+        const questionToAdd: Question = {
+            answers: [
+                {
+                    text: obj.answer1,
+                    valid: obj.answer1isValid
+                },
+                {
+                    text: obj.answer2,
+                    valid: obj.answer1isValid
+                },
+                {
+                    text: obj.answer3,
+                    valid: obj.answer1isValid
+                },
+                {
+                    text: obj.answer4,
+                    valid: obj.answer1isValid
+                },
+            ],
+            quizID: "",
+            text: obj.questionTitle
+        }
+        setQuestions(prevQuestions => {
+            return [
+                ...prevQuestions,
+                questionToAdd
+            ]
+        })
+
+    }
+
+    console.log(questions)
+
+    const emptyQuestions = [];
+    for (let i = 0; i < questionsNumber; i++) {
+        emptyQuestions.push(<NewQuestion key={i+1} addQuestion={addQuestion}/>)
+    }
 
     const handleSubmit = async (event: SyntheticEvent) => {
         event.preventDefault();
@@ -58,7 +116,9 @@ export const QuizMaker = () => {
                 <label>Ending feedback: <input type="checkbox" name="endingFeedback" checked={newQuizData.endingFeedback} onChange={handleChange} /></label>
                 <label>Public listing: <input type="checkbox" name="publicListing" checked={newQuizData.publicListing} onChange={handleChange} /></label>
 
-                <button className='addQuestion-button'>Add question</button>
+                {emptyQuestions}
+
+                <button className='addQuestion-button' onClick={incQuestionsNo}>+</button>
 
                 <button className='create-button'>Save this quiz</button>
             </form>
