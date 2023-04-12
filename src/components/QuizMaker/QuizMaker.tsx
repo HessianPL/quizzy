@@ -51,8 +51,6 @@ export const QuizMaker = () => {
 
     }
 
-    console.log(questions) //@TODO: delete in production
-
     const emptyQuestionsElement = [];
     for (let i = 0; i < questionsNumber; i++) {
         emptyQuestionsElement.push(<NewQuestion key={i+1} addQuestion={addQuestion}/>)
