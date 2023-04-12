@@ -2,18 +2,35 @@
     padding: 20px 10px;
     border: 1px solid black;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    width: 60%;
+    grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
-    grid-gap: 10px;
+    grid-gap: 15px;
     margin-top: 20px;
 }
 
-.question {
-    grid-column: 1 / -1;
+input, textarea {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
 }
 
-.answer {
-    grid-colum: auto / span 6
+input[type="checkbox"] {
+    transform: scale(1.5);
+}
+
+label.question {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+label.question input {
+    width: 70%;
+}
+
+label {
+    grid-column: span 6;
+    text-align: right;
 }
 
 .saveButton {
@@ -21,4 +38,9 @@
     grid-column: 1 / -1;
     cursor: pointer;
     padding: 10px;
+}
+
+.newQuestion label:has(input[type="checkbox"]) {
+    text-align: left;
+    grid-column: span 6;
 }

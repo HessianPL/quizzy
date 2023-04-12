@@ -56,44 +56,44 @@ export const NewQuestion = ({addQuestion}: Props) => {
 
     return (
         <div className='newQuestion'>
-            <label className='question'>Question:
+            <label className='question'><span>Question: </span>
                 <input type='text' name='text' value={newQuestionData.text} onChange={handleInputChange}/>
             </label>
 
-            <label>Answer1:
+            <label><span>Answer1: </span>
                 <input type='text' name='answer1' value={newQuestionData.answer1} onChange={handleInputChange}/>
             </label>
 
             <label>
                 <input type='checkbox' name='answer1isValid' checked={newQuestionData.answer1isValid}/>
-                Is correct
+                <span> Mark as correct answer</span>
             </label>
 
-            <label>Answer2:
+            <label><span>Answer2: </span>
                 <input type='text' name='answer2' value={newQuestionData.answer2} onChange={handleInputChange}/>
             </label>
 
             <label>
                 <input type='checkbox' name='answer2isValid' checked={newQuestionData.answer2isValid}/>
-                Is correct
+                <span> Mark as correct answer</span>
             </label>
 
-            <label>Answer3:
+            <label><span>Answer3: </span>
                 <input type='text' name='answer3' value={newQuestionData.answer3} onChange={handleInputChange}/>
             </label>
 
             <label>
                 <input type='checkbox' name='answer3isValid' checked={newQuestionData.answer3isValid}/>
-                Is correct
+                <span> Mark as correct answer</span>
             </label>
 
-            <label>Answer4:
+            <label><span>Answer4: </span>
                 <input type='text' name='answer4' value={newQuestionData.answer4} onChange={handleInputChange}/>
             </label>
 
             <label>
                 <input type='checkbox' name='answer4isValid' checked={newQuestionData.answer4isValid}/>
-                Is correct
+                <span> Mark as correct answer</span>
             </label>
 
             <button className='saveButton' disabled={isDisabled} onClick={saveQuestion}>Save this question and answers</button>
