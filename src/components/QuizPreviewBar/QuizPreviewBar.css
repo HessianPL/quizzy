@@ -1,17 +1,16 @@
 .quizPreviewBar {
     border: 1px solid black;
-    width: 45%;
+    width: 60%;
     margin: 5px auto;
-    padding: 2px;
+    padding: 5px 5px 5px 20px;
     text-align: left;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    padding: 2px 5px;
 }
 
 .quizPreviewBar:hover {
-    background-color: rgba(234, 0, 255, 0.06);
+    background-color: var(--papaya-whip);
     transition: all 0.2s linear;
 }
 
@@ -38,7 +37,7 @@
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 150px;
-    background-color: #fad7ff;
+    background-color: var(--jonquil);
     color: black;
     text-align: center;
     padding: 5px 0;
@@ -48,7 +47,7 @@
     z-index: 1;
 }
 .tooltip .tooltiptext--long {
-    width: 300px;
+    min-width: 200px;
 }
 .tooltip:hover .tooltiptext,
 .tooltip:hover{
