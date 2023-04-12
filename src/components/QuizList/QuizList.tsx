@@ -2,13 +2,14 @@ import {useState, useEffect} from "react";
 import {QuizPreviewBar} from "../QuizPreviewBar/QuizPreviewBar";
 import {Link} from "react-router-dom";
 import { QuizEntityResponse } from "../../../../quizzy-back/types/quiz/quiz-entity-response";
+import {apiURL} from "../../config/api";
 
 export const QuizList= () => {
     const [quizList, setQuizList] = useState([]);
 
     useEffect(() => {
         const fetchQuizList = async () => {
-            const response = await fetch(`http://127.0.0.1:${3001}/quiz`);
+            const response = await fetch(`${apiURL}/quiz`);
             const listToSave = await response.json();
             setQuizList(listToSave)
         }

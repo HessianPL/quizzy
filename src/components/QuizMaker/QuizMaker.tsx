@@ -3,6 +3,7 @@ import { QuizEntityIncoming } from "../../../../quizzy-back/types/quiz/quiz-enti
 import './QuizMaker.css'
 import {NewQuestion, questionData} from "../NewQuestion/NewQuestion";
 import { QuizAdded } from "../QuizAdded/QuizAdded";
+import {apiURL} from "../../config/api";
 
 export const QuizMaker = () => {
     const [newQuizData, setNewQuizData] = useState<QuizEntityIncoming>({
@@ -58,7 +59,7 @@ export const QuizMaker = () => {
     }
 
     const saveQuizIntoDB = async() => {
-        const response = await fetch(`http://127.0.0.1:${3001}/quiz`, {
+        const response = await fetch(`${apiURL}/quiz`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +71,7 @@ export const QuizMaker = () => {
     }
 
     const saveQuestionIntoDB = async(questionToSave: questionData) => {
-        await fetch(`http://127.0.0.1:${3001}/question`, {
+        await fetch(`${apiURL}/question`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

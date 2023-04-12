@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {Question} from "../Question/Question";
+import {apiURL} from "../../config/api";
 
 interface Props {
     quizID: string;
@@ -10,7 +11,7 @@ export const QuestionsLoader = (props: Props) => {
 
     useEffect(() => {
         const fetchQuestions = async () => {
-            const response = await fetch(`http://127.0.0.1:${3001}/question/${props.quizID}`);
+            const response = await fetch(`${apiURL}/question/${props.quizID}`);
             const data = await response.json();
             console.log(data);
             setQuestions(data);

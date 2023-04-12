@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import { QuizEntity } from "../../../../quizzy-back/types/quiz/quiz-entity";
 import './Quiz.css'
 import {QuestionsLoader} from "../QuestionsLoader/QuestionsLoader";
+import {apiURL} from "../../config/api";
 
 interface Props {
     quizID?: string
@@ -13,7 +14,7 @@ export const Quiz = (props: Props) => {
 
     useEffect(() => {
         const fetchQuizData = async () => {
-            const response = await fetch(`http://127.0.0.1:${3001}/quiz/${props.quizID}`);
+            const response = await fetch(`${apiURL}/quiz/${props.quizID}`);
             const dataToSave: QuizEntity = await response.json();
             setQuizData(dataToSave)
         }
