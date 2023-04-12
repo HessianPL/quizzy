@@ -16,16 +16,6 @@ export const QuizMaker = () => {
         }
     )
 
-   // interface Question {
-   //      id?: string,
-   //      quizID: string,
-   //      text: string,
-   //      answers: {
-   //          text: string,
-   //          valid: boolean
-   //      }[]
-   //  }
-
     const [questions, setQuestions] = useState<questionData[]>([]);
     const [questionsNumber, setQuestionsNumber] = useState(0)
 
@@ -64,8 +54,7 @@ export const QuizMaker = () => {
         emptyQuestionsElement.push(<NewQuestion key={i+1} addQuestion={addQuestion}/>)
     }
 
-    const handleSubmit = async (event: SyntheticEvent) => {
-        event.preventDefault();
+    const saveQuizIntoDB = async() => {
         const response = await fetch(`http://127.0.0.1:${3001}/quiz`, {
             method: 'POST',
             headers: {
@@ -74,7 +63,29 @@ export const QuizMaker = () => {
             body: JSON.stringify(newQuizData)
         });
         const newIdForQuiz = await response.json();
-        console.log(newIdForQuiz)
+        return newIdForQuiz || null;
+    }
+
+    const saveQuestionIntoDB = async(questionToSave: questionData) => {
+        await fetch(`http://127.0.0.1:${3001}/question`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(questionToSave)
+        });
+    }
+
+    const handleSubmit = async (event: SyntheticEvent) => {
+        event.preventDefault();
+        const quizID = await saveQuizIntoDB();
+        const questionsToSave = questions.map(question =>{
+            return  {...question, quizID: quizID}
+        });
+
+        // console.log(questions); //TODO: debug, delete in production
+        // console.log(questionsToSave); //TODO: debug, delete in production
+        questionsToSave.forEach(question => saveQuestionIntoDB(question));
     }
 
     type InputValue = string | boolean;
@@ -114,4 +125,3 @@ export const QuizMaker = () => {
         </>
     )
 }
-
