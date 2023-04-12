@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import { QuizEntity } from "../../../../quizzy-back/types/quiz/quiz-entity";
 import './Quiz.css'
+import {QuestionsLoader} from "../QuestionsLoader/QuestionsLoader";
 
 interface Props {
     quizID?: string
@@ -34,8 +35,6 @@ export const Quiz = (props: Props) => {
         setHasStarted(prevHasStarted =>!prevHasStarted);
     }
 
-    console.log({hasStarted})
-
     return (
         <div className='quiz'>
             <h2>{quizData.title}</h2>
@@ -47,6 +46,7 @@ export const Quiz = (props: Props) => {
             {quizData.publicListing ? <p>This test is public, meaning it's visible by all site users and everyone can take it</p> : null}
             <p className='callToAction'>Press the start button below to begin the quiz</p>
             <button type="button" onClick={handleClick} className='start-button'>START</button>
+            {hasStarted && <QuestionsLoader quizID={quizData.id}/>}
         </div>
     )
 }
