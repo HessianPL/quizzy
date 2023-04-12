@@ -82,8 +82,8 @@ export const QuizMaker = () => {
             },
             body: JSON.stringify(newQuizData)
         });
-        const data = await response.json();
-        console.log(data)
+        const newIdForQuiz = await response.json();
+        console.log(newIdForQuiz)
     }
 
     type InputValue = string | boolean;
