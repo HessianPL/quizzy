@@ -15,19 +15,38 @@ Made as an ending project for <a href="https://megak.pl/">MegaK JS Course</a>
 * Express
 * MySQL
 
-## Installation
+## How to install
+```
+ git clone https://github.com/HessianPL/quizzy.git frontend
+ git clone https://github.com/HessianPL/quizzy-backend.git backend
+ cd frontend
+ npm install
+ cd ../backend
+ npm install
+```
 
-### `git clone ....`
+## How to run
 
-### `npm start`
+### Backend
+While in backend folder, type:
+```
+npm start
+```
+And you should see 'Listening on http://localhost:3001' in the console
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Frontend
+While in frontend folder, type:
+```
+npm start
+```
+New browser tab, with working app should be opened automatically.
+If not, go to [http://localhost:3000](http://localhost:3000) manually
 
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
+You may also want to build frontend part of this app to the 'build' folder by running
+```
+npm run build
+```
 
 ## Live demo
-You may try a live demo on https://main--cozy-shortbread-9075c9.netlify.app/
+You are welcome to try a live demo on https://quizzy.networkmanager.pl/
