@@ -1,4 +1,24 @@
 .newQuestion {
     padding: 20px 10px;
     border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+.question {
+    grid-column: 1 / -1;
+}
+
+.answer {
+    grid-colum: auto / span 6
+}
+
+.saveButton {
+    margin-top: 20px;
+    grid-column: 1 / -1;
+    cursor: pointer;
+    padding: 10px;
 }

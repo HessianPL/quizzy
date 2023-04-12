@@ -50,15 +50,13 @@ export const NewQuestion = ({addQuestion}: Props) => {
 
     const saveQuestion = (event: SyntheticEvent) => {
         event.preventDefault();
-        // console.log('Form with new question data is sent')
-        // console.log(newQuestionData)
         setIsDisabled(true);
         addQuestion(newQuestionData);
     }
 
     return (
         <div className='newQuestion'>
-                <label>Question: <input type='text' name='text' value={newQuestionData.text}
+                <label className={'question'}>Question: <input type='text' name='text' value={newQuestionData.text}
                                         onChange={handleInputChange}/></label>
                 <label>Answer1: <input type='text' name='answer1' value={newQuestionData.answer1}
                                        onChange={handleInputChange}/></label>
@@ -68,7 +66,7 @@ export const NewQuestion = ({addQuestion}: Props) => {
                                        onChange={handleInputChange}/></label>
                 <label>Answer4: <input type='text' name='answer4' value={newQuestionData.answer4}
                                        onChange={handleInputChange}/></label>
-            <button disabled={isDisabled} onClick={saveQuestion}>Save this question and answers</button>
+            <button className='saveButton' disabled={isDisabled} onClick={saveQuestion}>Save this question and answers</button>
         </div>
     )
 }

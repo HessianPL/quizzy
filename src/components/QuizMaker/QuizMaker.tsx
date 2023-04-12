@@ -119,7 +119,7 @@ export const QuizMaker = () => {
 
                 {emptyQuestionsElement}
 
-                <button className='addQuestion-button' onClick={incQuestionsNo}>+</button>
+                <button className='addQuestion-button' onClick={incQuestionsNo}>+ Add new question +</button>
                 <button className='create-button'>Save this quiz</button>
             </form>
         </>
