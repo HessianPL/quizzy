@@ -16,17 +16,17 @@ export const QuizMaker = () => {
         }
     )
 
-   interface Question {
-        id?: string,
-        quizID: string,
-        text: string,
-        answers: {
-            text: string,
-            valid: boolean
-        }[]
-    }
+   // interface Question {
+   //      id?: string,
+   //      quizID: string,
+   //      text: string,
+   //      answers: {
+   //          text: string,
+   //          valid: boolean
+   //      }[]
+   //  }
 
-    const [questions, setQuestions] = useState<Question[]>([]);
+    const [questions, setQuestions] = useState<questionData[]>([]);
     const [questionsNumber, setQuestionsNumber] = useState(0)
 
     const incQuestionsNo = (event: SyntheticEvent) => {
@@ -35,27 +35,18 @@ export const QuizMaker = () => {
     }
 
     const addQuestion = (obj: questionData) => {
-        const questionToAdd: Question = {
-            answers: [
-                {
-                    text: obj.answer1,
-                    valid: obj.answer1isValid
-                },
-                {
-                    text: obj.answer2,
-                    valid: obj.answer1isValid
-                },
-                {
-                    text: obj.answer3,
-                    valid: obj.answer1isValid
-                },
-                {
-                    text: obj.answer4,
-                    valid: obj.answer1isValid
-                },
-            ],
+        const questionToAdd: questionData = {
             quizID: "",
-            text: obj.questionTitle
+            text: obj.text,
+            answer1: obj.answer1,
+            answer2: obj.answer2,
+            answer3: obj.answer3,
+            answer4: obj.answer4,
+            answer1isValid: obj.answer1isValid,
+            answer2isValid: obj.answer2isValid,
+            answer3isValid: obj.answer3isValid,
+            answer4isValid: obj.answer4isValid
+
         }
         setQuestions(prevQuestions => {
             return [
@@ -66,11 +57,11 @@ export const QuizMaker = () => {
 
     }
 
-    console.log(questions)
+    console.log(questions) //@TODO: delete in production
 
-    const emptyQuestions = [];
+    const emptyQuestionsElement = [];
     for (let i = 0; i < questionsNumber; i++) {
-        emptyQuestions.push(<NewQuestion key={i+1} addQuestion={addQuestion}/>)
+        emptyQuestionsElement.push(<NewQuestion key={i+1} addQuestion={addQuestion}/>)
     }
 
     const handleSubmit = async (event: SyntheticEvent) => {
@@ -87,7 +78,6 @@ export const QuizMaker = () => {
     }
 
     type InputValue = string | boolean;
-
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const target = event.target;
         const inputValue: InputValue =
@@ -116,10 +106,9 @@ export const QuizMaker = () => {
                 <label>Ending feedback: <input type="checkbox" name="endingFeedback" checked={newQuizData.endingFeedback} onChange={handleChange} /></label>
                 <label>Public listing: <input type="checkbox" name="publicListing" checked={newQuizData.publicListing} onChange={handleChange} /></label>
 
-                {emptyQuestions}
+                {emptyQuestionsElement}
 
                 <button className='addQuestion-button' onClick={incQuestionsNo}>+</button>
-
                 <button className='create-button'>Save this quiz</button>
             </form>
         </>

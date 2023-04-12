@@ -2,7 +2,9 @@ import './NewQuestion.css'
 import {ChangeEvent, SyntheticEvent, useState} from "react";
 
 export interface questionData {
-    questionTitle: string;
+    id?: string;
+    quizID?: string;
+    text : string;
     answer1: string;
     answer2: string;
     answer3: string;
@@ -17,14 +19,14 @@ interface Props {
     addQuestion(obj: {
         // answers: [],
         // quizID: string,
-        questionTitle: string
+        text: string
     }): void
 }
 
 export const NewQuestion = ({addQuestion}: Props) => {
     const [isDisabled, setIsDisabled] = useState(false);
     const [newQuestionData, setNewQuestionData] = useState<questionData>({
-        questionTitle: "",
+        text: "",
         answer1: "",
         answer1isValid: false,
         answer2: "",
@@ -46,7 +48,7 @@ export const NewQuestion = ({addQuestion}: Props) => {
         })
     }
 
-    const sendForm = (event: SyntheticEvent) => {
+    const saveQuestion = (event: SyntheticEvent) => {
         event.preventDefault();
         // console.log('Form with new question data is sent')
         // console.log(newQuestionData)
@@ -56,7 +58,7 @@ export const NewQuestion = ({addQuestion}: Props) => {
 
     return (
         <div className='newQuestion'>
-                <label>Question: <input type='text' name='questionTitle' value={newQuestionData.questionTitle}
+                <label>Question: <input type='text' name='text' value={newQuestionData.text}
                                         onChange={handleInputChange}/></label>
                 <label>Answer1: <input type='text' name='answer1' value={newQuestionData.answer1}
                                        onChange={handleInputChange}/></label>
@@ -66,7 +68,7 @@ export const NewQuestion = ({addQuestion}: Props) => {
                                        onChange={handleInputChange}/></label>
                 <label>Answer4: <input type='text' name='answer4' value={newQuestionData.answer4}
                                        onChange={handleInputChange}/></label>
-            <button disabled={isDisabled} onClick={sendForm}>Save this question and answers</button>
+            <button disabled={isDisabled} onClick={saveQuestion}>Save this question and answers</button>
         </div>
     )
 }
