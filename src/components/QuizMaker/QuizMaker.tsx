@@ -114,14 +114,14 @@ export const QuizMaker = () => {
         <>
             <h2>Create your own quiz!</h2>
             <form onSubmit={handleSubmit} className='newQuizForm'>
-                <label>Quiz title: <input required={true} type="text" name="title" id='title' placeholder="Title of the quiz" value={newQuizData.title} onChange={handleChange}/>
-                </label>
-                <label>Description: <textarea name="description" placeholder="Description" value={newQuizData.description} onChange={handleChange}/></label>
-                <label>Passing percentage: <input type="number" name="passingPercentage" min={0} max={100} value={newQuizData.passingPercentage} onChange={handleChange} /></label>
-                <label>Time to complete (max 120 minutes): <input type="number" name="timerQuiz" min={0} max={60*60*2} value={newQuizData.timerQuiz} onChange={handleChange} /></label>
-                <label>Instant feedback: <input type="checkbox" name="instantFeedback" checked={newQuizData.instantFeedback} onChange={handleChange} /></label>
-                <label>Ending feedback: <input type="checkbox" name="endingFeedback" checked={newQuizData.endingFeedback} onChange={handleChange} /></label>
-                <label>Public listing: <input type="checkbox" name="publicListing" checked={newQuizData.publicListing} onChange={handleChange} /></label>
+                <label className='quizInfoLabel'><span className='label'>Quiz title: </span><span className='input'><input required={true} type="text" name="title" id='title' placeholder="Title of the quiz" value={newQuizData.title} onChange={handleChange}/>
+                </span></label>
+                <label className='quizInfoLabel'><span className='label'>Description: </span><span className='input'><textarea name="description" placeholder="Description" value={newQuizData.description} onChange={handleChange}/></span></label>
+                <label className='quizInfoLabel'><span className='label'>Passing percentage: </span><span className='input'><input type="number" name="passingPercentage" min={0} max={100} value={newQuizData.passingPercentage} onChange={handleChange} /></span></label>
+                <label className='quizInfoLabel'><span className='label'>Time to complete (max 120 minutes): </span><span className='input'><input type="number" name="timerQuiz" min={0} max={60*60*2} value={newQuizData.timerQuiz} onChange={handleChange} /></span></label>
+                <label className='quizInfoLabel'><span className='label'>Instant feedback: </span><span className='input'><input type="checkbox" name="instantFeedback" checked={newQuizData.instantFeedback} onChange={handleChange} /></span></label>
+                <label className='quizInfoLabel'><span className='label'>Ending feedback: </span><span className='input'><input type="checkbox" name="endingFeedback" checked={newQuizData.endingFeedback} onChange={handleChange} /></span></label>
+                <label className='quizInfoLabel'><span className='label'>Public listing: </span><span className='input'><input type="checkbox" name="publicListing" checked={newQuizData.publicListing} onChange={handleChange} /></span></label>
 
                 {emptyQuestionsElement}
 
