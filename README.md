@@ -6,7 +6,11 @@ Make a quiz, personalize it and share it
 
 .. or pick one from our public list and do it for fun!
 
-Made as an ending project for <a href="https://megak.pl/">MegaK JS Course</a>
+Made as an individual full-stack project for the <a href="https://megak.pl/">MegaK JS Course</a>
+
+## Screenshots
+![quizzy networkmanager pl_makequiz-doQuiz](https://user-images.githubusercontent.com/6266547/231597893-b9c4d713-ee46-4d8c-9101-b5530c528658.png)
+![quizzy networkmanager pl_makequiz-newQuiz](https://user-images.githubusercontent.com/6266547/231597899-b9ad48fa-05f7-4afb-88fc-6972a1a329db.png)
 
 ## Technologies used
 
