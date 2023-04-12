@@ -1,6 +1,7 @@
 import {ChangeEvent, SyntheticEvent, useState} from "react";
 import { QuizEntityIncoming } from "../../../../quizzy-back/types/quiz/quiz-entity-incoming";
 import './QuizMaker.css'
+import {NewQuestion, questionData} from "../NewQuestion/NewQuestion";
 
 export const QuizMaker = () => {
     const [newQuizData, setNewQuizData] = useState<QuizEntityIncoming>({
@@ -15,8 +16,45 @@ export const QuizMaker = () => {
         }
     )
 
-    const handleSubmit = async (event: SyntheticEvent) => {
+    const [questions, setQuestions] = useState<questionData[]>([]);
+    const [questionsNumber, setQuestionsNumber] = useState(0)
+
+    const incQuestionsNo = (event: SyntheticEvent) => {
         event.preventDefault();
+        setQuestionsNumber(prevQuestionsNumber => prevQuestionsNumber + 1)
+    }
+
+    const addQuestion = (obj: questionData) => {
+        const questionToAdd: questionData = {
+            quizID: "",
+            text: obj.text,
+            answer1: obj.answer1,
+            answer2: obj.answer2,
+            answer3: obj.answer3,
+            answer4: obj.answer4,
+            answer1isValid: obj.answer1isValid,
+            answer2isValid: obj.answer2isValid,
+            answer3isValid: obj.answer3isValid,
+            answer4isValid: obj.answer4isValid
+
+        }
+        setQuestions(prevQuestions => {
+            return [
+                ...prevQuestions,
+                questionToAdd
+            ]
+        })
+
+    }
+
+    console.log(questions) //@TODO: delete in production
+
+    const emptyQuestionsElement = [];
+    for (let i = 0; i < questionsNumber; i++) {
+        emptyQuestionsElement.push(<NewQuestion key={i+1} addQuestion={addQuestion}/>)
+    }
+
+    const saveQuizIntoDB = async() => {
         const response = await fetch(`http://127.0.0.1:${3001}/quiz`, {
             method: 'POST',
             headers: {
@@ -24,12 +62,33 @@ export const QuizMaker = () => {
             },
             body: JSON.stringify(newQuizData)
         });
-        const data = await response.json();
-        console.log(data)
+        const newIdForQuiz = await response.json();
+        return newIdForQuiz || null;
+    }
+
+    const saveQuestionIntoDB = async(questionToSave: questionData) => {
+        await fetch(`http://127.0.0.1:${3001}/question`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(questionToSave)
+        });
+    }
+
+    const handleSubmit = async (event: SyntheticEvent) => {
+        event.preventDefault();
+        const quizID = await saveQuizIntoDB();
+        const questionsToSave = questions.map(question =>{
+            return  {...question, quizID: quizID}
+        });
+
+        // console.log(questions); //TODO: debug, delete in production
+        // console.log(questionsToSave); //TODO: debug, delete in production
+        questionsToSave.forEach(question => saveQuestionIntoDB(question));
     }
 
     type InputValue = string | boolean;
-
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const target = event.target;
         const inputValue: InputValue =
@@ -58,11 +117,11 @@ export const QuizMaker = () => {
                 <label>Ending feedback: <input type="checkbox" name="endingFeedback" checked={newQuizData.endingFeedback} onChange={handleChange} /></label>
                 <label>Public listing: <input type="checkbox" name="publicListing" checked={newQuizData.publicListing} onChange={handleChange} /></label>
 
-                <button className='addQuestion-button'>Add question</button>
+                {emptyQuestionsElement}
 
+                <button className='addQuestion-button' onClick={incQuestionsNo}>+</button>
                 <button className='create-button'>Save this quiz</button>
             </form>
         </>
     )
 }
-
