@@ -4,7 +4,7 @@ import {ChangeEvent, SyntheticEvent, useState} from "react";
 export interface questionData {
     id?: string;
     quizID?: string;
-    text : string;
+    text: string;
     answer1: string;
     answer2: string;
     answer3: string;
@@ -56,16 +56,46 @@ export const NewQuestion = ({addQuestion}: Props) => {
 
     return (
         <div className='newQuestion'>
-                <label className={'question'}>Question: <input type='text' name='text' value={newQuestionData.text}
-                                        onChange={handleInputChange}/></label>
-                <label>Answer1: <input type='text' name='answer1' value={newQuestionData.answer1}
-                                       onChange={handleInputChange}/></label>
-                <label>Answer2: <input type='text' name='answer2' value={newQuestionData.answer2}
-                                       onChange={handleInputChange}/></label>
-                <label>Answer3: <input type='text' name='answer3' value={newQuestionData.answer3}
-                                       onChange={handleInputChange}/></label>
-                <label>Answer4: <input type='text' name='answer4' value={newQuestionData.answer4}
-                                       onChange={handleInputChange}/></label>
+            <label className='question'>Question:
+                <input type='text' name='text' value={newQuestionData.text} onChange={handleInputChange}/>
+            </label>
+
+            <label>Answer1:
+                <input type='text' name='answer1' value={newQuestionData.answer1} onChange={handleInputChange}/>
+            </label>
+
+            <label>
+                <input type='checkbox' name='answer1isValid' checked={newQuestionData.answer1isValid}/>
+                Is correct
+            </label>
+
+            <label>Answer2:
+                <input type='text' name='answer2' value={newQuestionData.answer2} onChange={handleInputChange}/>
+            </label>
+
+            <label>
+                <input type='checkbox' name='answer2isValid' checked={newQuestionData.answer2isValid}/>
+                Is correct
+            </label>
+
+            <label>Answer3:
+                <input type='text' name='answer3' value={newQuestionData.answer3} onChange={handleInputChange}/>
+            </label>
+
+            <label>
+                <input type='checkbox' name='answer3isValid' checked={newQuestionData.answer3isValid}/>
+                Is correct
+            </label>
+
+            <label>Answer4:
+                <input type='text' name='answer4' value={newQuestionData.answer4} onChange={handleInputChange}/>
+            </label>
+
+            <label>
+                <input type='checkbox' name='answer4isValid' checked={newQuestionData.answer4isValid}/>
+                Is correct
+            </label>
+
             <button className='saveButton' disabled={isDisabled} onClick={saveQuestion}>Save this question and answers</button>
         </div>
     )
