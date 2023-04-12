@@ -2,6 +2,7 @@ import {ChangeEvent, SyntheticEvent, useState} from "react";
 import { QuizEntityIncoming } from "../../../../quizzy-back/types/quiz/quiz-entity-incoming";
 import './QuizMaker.css'
 import {NewQuestion, questionData} from "../NewQuestion/NewQuestion";
+import { QuizAdded } from "../QuizAdded/QuizAdded";
 
 export const QuizMaker = () => {
     const [newQuizData, setNewQuizData] = useState<QuizEntityIncoming>({
@@ -17,7 +18,9 @@ export const QuizMaker = () => {
     )
 
     const [questions, setQuestions] = useState<questionData[]>([]);
-    const [questionsNumber, setQuestionsNumber] = useState(0)
+    const [questionsNumber, setQuestionsNumber] = useState(0);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [quizID, setQuizID] = useState<string | null>(null)
 
     const incQuestionsNo = (event: SyntheticEvent) => {
         event.preventDefault();
@@ -82,10 +85,9 @@ export const QuizMaker = () => {
         const questionsToSave = questions.map(question =>{
             return  {...question, quizID: quizID}
         });
-
-        // console.log(questions); //TODO: debug, delete in production
-        // console.log(questionsToSave); //TODO: debug, delete in production
         questionsToSave.forEach(question => saveQuestionIntoDB(question));
+        setIsSubmitted(true);
+        await setQuizID(quizID);
     }
 
     type InputValue = string | boolean;
@@ -102,6 +104,10 @@ export const QuizMaker = () => {
                 [target.name]: inputValue
             }
         })
+    }
+
+    if (isSubmitted) {
+        return <QuizAdded quizID = {quizID}/>
     }
 
     return (
