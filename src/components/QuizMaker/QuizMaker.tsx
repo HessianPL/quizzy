@@ -20,12 +20,16 @@ export const QuizMaker = () => {
 
     const [questions, setQuestions] = useState<questionData[]>([]);
     const [questionsNumber, setQuestionsNumber] = useState(0);
+    const [canBeSubmitted, setCanBeSubmitted] = useState(false);
+    const [canAddQuestion, setCanAddQuestion] = useState(true)
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [quizID, setQuizID] = useState<string | null>(null)
 
     const incQuestionsNo = (event: SyntheticEvent) => {
         event.preventDefault();
-        setQuestionsNumber(prevQuestionsNumber => prevQuestionsNumber + 1)
+        setQuestionsNumber(prevQuestionsNumber => prevQuestionsNumber + 1);
+        setCanAddQuestion(false);
+        setCanBeSubmitted(false);
     }
 
     const addQuestion = (obj: questionData) => {
@@ -48,7 +52,8 @@ export const QuizMaker = () => {
                 questionToAdd
             ]
         })
-
+        setCanAddQuestion(true)
+        setCanBeSubmitted(true);
     }
 
     const emptyQuestionsElement = [];
@@ -78,8 +83,9 @@ export const QuizMaker = () => {
         });
     }
 
-    const handleSubmit = async (event: SyntheticEvent) => {
+    const handleSubmit = async (event: SyntheticEvent): Promise<void | null> => {
         event.preventDefault();
+        if (!canBeSubmitted) return null;
         const quizID = await saveQuizIntoDB();
         const questionsToSave = questions.map(question =>{
             return  {...question, quizID: quizID}
@@ -124,8 +130,8 @@ export const QuizMaker = () => {
 
                 {emptyQuestionsElement}
 
-                <button className='addQuestion-button' onClick={incQuestionsNo}>+ Add new question +</button>
-                <button className='create-button'>Save this quiz</button>
+                <button className='addQuestion-button' disabled={!canAddQuestion} onClick={incQuestionsNo}>+ Add new question +</button>
+                <button className='create-button' disabled={!canBeSubmitted}>Save this quiz</button>
             </form>
         </>
     )
