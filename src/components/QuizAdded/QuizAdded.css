@@ -1,3 +1,9 @@
 .quizAddedInfo h3 {
     color: black;
 }
+
+.addQuestion-button,
+.create-button {
+    padding: 7px 10px;
+    margin-top: 20px;
+}
