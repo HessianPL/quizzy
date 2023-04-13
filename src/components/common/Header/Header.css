@@ -40,8 +40,7 @@ h3 {
 }
 
 .header__item:hover * {
-    color: var(--rojo);
-    transition: all 0.2s linear;
-    border-bottom: 2px solid var(--rojo);
-
+    color: white;
+    transition: all 0.1s linear;
+    border-bottom: 2px solid var(--jonquil);
 }
