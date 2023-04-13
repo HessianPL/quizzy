@@ -22,8 +22,9 @@
     cursor: pointer;
     transition: background-color 0.2s linear;
     min-height: 40px;
+    line-height: 40px;
 }
 
 .answer:hover {
-    background-color: #e5b7f6;
+    background-color: var(--papaya-whip);
 }
