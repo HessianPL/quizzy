@@ -16,11 +16,7 @@ export interface questionData {
 }
 
 interface Props {
-    addQuestion(obj: {
-        // answers: [],
-        // quizID: string,
-        text: string
-    }): void
+    addQuestion(obj: questionData): void
 }
 
 export const NewQuestion = ({addQuestion}: Props) => {
@@ -62,11 +58,11 @@ export const NewQuestion = ({addQuestion}: Props) => {
     return (
         <div className='newQuestion'>
             <label className='question'><span>Question: </span>
-                <input type='text' name='text' value={newQuestionData.text} onChange={handleInputChange}/>
+                <input type='text' name='text' required={true} value={newQuestionData.text} onChange={handleInputChange}/>
             </label>
 
             <label><span>Answer1: </span>
-                <input type='text' name='answer1' value={newQuestionData.answer1} onChange={handleInputChange}/>
+                <input type='text' name='answer1' required={true} value={newQuestionData.answer1} onChange={handleInputChange}/>
             </label>
 
             <label>
