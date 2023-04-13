@@ -46,7 +46,8 @@ export const Quiz = (props: Props) => {
             {quizData.endingFeedback ? <p>Ending feedback is enabled in this quiz, meaning that after completing the quiz, you will receive information on whether you have completed it successfully or not.</p> : null}
             {quizData.publicListing ? <p>This test is public, meaning it's visible by all site users and everyone can take it</p> : null}
             <p className='callToAction'>Press the start button below to begin the quiz</p>
-            <button type="button" onClick={handleClick} className='start-button'>START</button>
+            <p className='developer-note'><span>***Dev note: Full functionality will be released on April 14th, stay tuned***</span></p>
+            <button type="button" disabled={hasStarted} onClick={handleClick} className='start-button'>START</button>
             {hasStarted && <QuestionsLoader quizID={quizData.id}/>}
         </div>
     )

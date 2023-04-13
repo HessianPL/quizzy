@@ -11,3 +11,14 @@
     padding: 3px 5px;
     cursor: pointer;
 }
+
+.developer-note {
+    margin: 40px;
+}
+
+.developer-note span {
+    color: crimson;
+    border: 2px dashed crimson;
+    padding: 10px;
+    border-radius: 5px;
+}
