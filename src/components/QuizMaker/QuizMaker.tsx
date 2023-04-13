@@ -118,9 +118,9 @@ export const QuizMaker = () => {
                 <label className='quizInfoLabel'><span className='label'>Description: </span><span className='input'><textarea name="description" placeholder="Description" value={newQuizData.description} onChange={handleChange}/></span></label>
                 <label className='quizInfoLabel'><span className='label'>Passing percentage: </span><span className='input'><input type="number" name="passingPercentage" min={0} max={100} value={newQuizData.passingPercentage} onChange={handleChange} /></span></label>
                 <label className='quizInfoLabel'><span className='label'>Time to complete (max 120 minutes): </span><span className='input'><input type="number" name="timerQuiz" min={0} max={60*60*2} value={newQuizData.timerQuiz} onChange={handleChange} /></span></label>
-                <label className='quizInfoLabel'><span className='label'>Instant feedback: </span><span className='input'><input type="checkbox" name="instantFeedback" checked={newQuizData.instantFeedback} onChange={handleChange} /></span></label>
-                <label className='quizInfoLabel'><span className='label'>Ending feedback: </span><span className='input'><input type="checkbox" name="endingFeedback" checked={newQuizData.endingFeedback} onChange={handleChange} /></span></label>
-                <label className='quizInfoLabel'><span className='label'>Public listing: </span><span className='input'><input type="checkbox" name="publicListing" checked={newQuizData.publicListing} onChange={handleChange} /></span></label>
+                <label className='quizInfoLabel'><span className='label'>Instant feedback: </span><span className='input'><input type="checkbox" name="instantFeedback" checked={newQuizData.instantFeedback} onChange={handleChange} disabled={true}/> *coming soon*</span></label>
+                <label className='quizInfoLabel'><span className='label'>Ending feedback: </span><span className='input'><input type="checkbox" name="endingFeedback" checked={newQuizData.endingFeedback} onChange={handleChange} disabled={true}/> *coming soon*</span></label>
+                <label className='quizInfoLabel'><span className='label'>Public listing: </span><span className='input'><input type="checkbox" name="publicListing" checked={newQuizData.publicListing} onChange={handleChange} disabled={true}/> *coming soon*</span></label>
 
                 {emptyQuestionsElement}
 
