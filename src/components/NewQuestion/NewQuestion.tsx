@@ -37,13 +37,18 @@ export const NewQuestion = ({addQuestion}: Props) => {
         answer4isValid: false,
     })
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const {value, name} = event.target;
+    type InputValue = string | boolean;
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const target = event.target;
+        const inputValue: InputValue =
+            target instanceof HTMLInputElement && target.type === 'checkbox'
+                ? target.checked
+                : target.value;
 
         setNewQuestionData(prevNewQuestionData => {
             return {
                 ...prevNewQuestionData,
-                [name]: value
+                [target.name]: inputValue
             }
         })
     }
@@ -65,7 +70,7 @@ export const NewQuestion = ({addQuestion}: Props) => {
             </label>
 
             <label>
-                <input type='checkbox' name='answer1isValid' checked={newQuestionData.answer1isValid}/>
+                <input type='checkbox' name='answer1isValid' checked={newQuestionData.answer1isValid} onChange={handleInputChange}/>
                 <span> Mark as correct answer</span>
             </label>
 
@@ -74,7 +79,7 @@ export const NewQuestion = ({addQuestion}: Props) => {
             </label>
 
             <label>
-                <input type='checkbox' name='answer2isValid' checked={newQuestionData.answer2isValid}/>
+                <input type='checkbox' name='answer2isValid' checked={newQuestionData.answer2isValid} onChange={handleInputChange}/>
                 <span> Mark as correct answer</span>
             </label>
 
@@ -83,7 +88,7 @@ export const NewQuestion = ({addQuestion}: Props) => {
             </label>
 
             <label>
-                <input type='checkbox' name='answer3isValid' checked={newQuestionData.answer3isValid}/>
+                <input type='checkbox' name='answer3isValid' checked={newQuestionData.answer3isValid} onChange={handleInputChange}/>
                 <span> Mark as correct answer</span>
             </label>
 
@@ -92,7 +97,7 @@ export const NewQuestion = ({addQuestion}: Props) => {
             </label>
 
             <label>
-                <input type='checkbox' name='answer4isValid' checked={newQuestionData.answer4isValid}/>
+                <input type='checkbox' name='answer4isValid' checked={newQuestionData.answer4isValid} onChange={handleInputChange}/>
                 <span> Mark as correct answer</span>
             </label>
 
