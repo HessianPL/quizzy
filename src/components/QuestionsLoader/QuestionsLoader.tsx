@@ -13,13 +13,13 @@ export const QuestionsLoader = (props: Props) => {
         const fetchQuestions = async () => {
             const response = await fetch(`${apiURL}/question/${props.quizID}`);
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setQuestions(data);
         }
         fetchQuestions();
     }, [])
 
-    const questionsElement = questions.map((question, index) => <Question questionData={question} questionNo={(index + 1)}/>)
+    const questionsElement = questions.map((question, index) => <Question questionData={question} key={index} questionNo={(index + 1)}/>)
 
     return (
         <>
