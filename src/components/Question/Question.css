@@ -5,7 +5,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 5px;
+    grid-gap: 20px;
+}
+
+.singleQuestionContainer:nth-child(odd) {
+    background-color: #ecfaff;
 }
 
 .singleQuestionTitle {
@@ -26,5 +30,10 @@
 }
 
 .answer:hover {
-    background-color: var(--papaya-whip);
+    background-color: var(--pacific-cyan);
+    border-inline: 5px solid var(--jonquil);
 }
+
+.answer.marked {
+    background-color: var(--pacific-cyan);
+    border-inline: 5px solid var(--jonquil);}

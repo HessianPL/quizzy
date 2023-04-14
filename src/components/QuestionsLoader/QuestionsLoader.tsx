@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {Question} from "../Question/Question";
 import {apiURL} from "../../config/api";
+import './QuestionsLoader.css'
 
 interface Props {
     quizID: string;
@@ -22,8 +23,8 @@ export const QuestionsLoader = (props: Props) => {
     const questionsElement = questions.map((question, index) => <Question questionData={question} key={index} questionNo={(index + 1)}/>)
 
     return (
-        <>
+        <div className='allQuestionsContainer'>
             {questionsElement}
-        </>
+        </div>
     )
 }
